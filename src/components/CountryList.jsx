@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
+import { useCities } from "../contexts/CitiesContext";
 import CountryItem from "./CountryItem";
 import styles from "./CountryList.module.css";
 import Message from "./Message";
 import Spinner from "./Spinner";
 
 // eslint-disable-next-line react/prop-types
-export default function CountryList({ isLoading, cities }) {
+export default function CountryList() {
+  const { isLoading, cities } = useCities();
+  
   if (isLoading) return <Spinner />;
   if (!cities.length)
     return <Message message="Add your first city by a city on the map" />;

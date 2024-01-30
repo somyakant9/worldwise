@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
 import Product from "./pages/Product";
 import Homepage from "./pages/Homepage";
 import Pricing from "./pages/Pricing";
@@ -9,12 +9,15 @@ import CityList from "./components/CityList";
 import CountryList from "./components/CountryList";
 import City from "./components/City";
 import Form from "./components/Form";
+import { CitiesProvider } from "./contexts/CitiesContext";
 
 
 function App() {
  
 
   return (
+    <CitiesProvider>
+    <BrowserRouter>
     <Routes>
       <Route index element={<Homepage />} />
       <Route path="product" element={<Product />} />
@@ -29,6 +32,8 @@ function App() {
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
+    </BrowserRouter>
+    </CitiesProvider>
   );
 }
 
